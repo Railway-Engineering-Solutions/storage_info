@@ -1,10 +1,11 @@
 name: storage_info
 description: Get storage info on Android and iOS
 version: 1.0.0
+repository: https://github.com/Railway-Engineering-Solutions/storage_info
 
 environment:
   sdk: ^3.5.0
-  flutter: ^3.24.0
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
