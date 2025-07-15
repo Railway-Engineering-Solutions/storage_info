@@ -1,6 +1,6 @@
 name: storage_info
 description: Get storage info on Android and iOS
-version: 0.1.0+1
+version: 1.0.0
 
 environment:
   sdk: ^3.5.0
@@ -15,7 +15,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
-  very_good_analysis: ^6.0.0
+  very_good_analysis: ^9.0.0
 
 flutter:
   plugin:
