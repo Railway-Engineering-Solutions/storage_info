@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:storage_info/src/storage_info.dart';
 import 'package:storage_info/src/storage_info_platform_interface.dart';
@@ -45,6 +46,19 @@ void main() {
       } on UnsupportedError catch (e) {
         expect(e, isA<UnsupportedError>());
       }
+    });
+
+    test(
+        'getStorageInfo returns correct data on a supported platform '
+        '(no injection)', () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      const storageInfo = StorageInfo();
+      final result = await storageInfo.getStorageInfo();
+
+      expect(result.totalBytes, 1000);
+      expect(result.freeBytes, 500);
+      expect(result.usedBytes, 500);
+      debugDefaultTargetPlatformOverride = null;
     });
 
     test('usedPercentage returns correct value', () {
