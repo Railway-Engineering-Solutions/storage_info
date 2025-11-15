@@ -3,14 +3,14 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'storage_info'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'Get storage info on iOS'
   s.description      = <<-DESC
 A Flutter plugin to get storage information for iOS.
                        DESC
   s.homepage         = 'https://github.com/yourusername/storage_info'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Your Company' => 'support@res.app' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
