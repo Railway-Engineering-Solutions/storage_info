@@ -10,7 +10,7 @@ A Flutter plugin to get total and available device storage information for iOS a
 
 ```yaml
 dependencies:
-  storage_info: ^0.1.0+1
+  storage_info: ^1.0.0
 ```
 
 ## Usage

@@ -4,8 +4,8 @@
 library;
 
 import 'dart:async';
-import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:storage_info/src/storage_info_platform_interface.dart';
 
 /// Storage information model
@@ -36,11 +36,17 @@ class StorageInfoData {
 /// {@macro storage_info}
 class StorageInfo {
   /// {@macro storage_info}
-  const StorageInfo();
+  const StorageInfo({
+    bool Function()? isSupportedPlatform,
+  }) : _isSupportedPlatform = isSupportedPlatform;
+
+  final bool Function()? _isSupportedPlatform;
 
   /// Get storage information for the device
   Future<StorageInfoData> getStorageInfo() {
-    if (!Platform.isAndroid && !Platform.isIOS) {
+    if (!(_isSupportedPlatform?.call() ??
+        (defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS))) {
       throw UnsupportedError(
         'StorageInfo is only supported on Android and iOS platforms.',
       );
