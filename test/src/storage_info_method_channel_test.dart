@@ -18,17 +18,17 @@ void main() {
 
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(
-        methodChannelStorageInfo.methodChannel,
-        (MethodCall methodCall) async {
-          if (methodCall.method == 'getStorageInfo') {
-            return <String, dynamic>{
-              'totalBytes': totalBytes,
-              'freeBytes': freeBytes,
-            };
-          }
-          return null;
-        },
-      );
+            methodChannelStorageInfo.methodChannel,
+            (methodCall) async {
+              if (methodCall.method == 'getStorageInfo') {
+                return <String, dynamic>{
+                  'totalBytes': totalBytes,
+                  'freeBytes': freeBytes,
+                };
+              }
+              return null;
+            },
+          );
 
       final result = await methodChannelStorageInfo.getStorageInfo();
 
@@ -40,14 +40,14 @@ void main() {
     test('getStorageInfo throws PlatformException on null result', () async {
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(
-        methodChannelStorageInfo.methodChannel,
-        (MethodCall methodCall) async {
-          if (methodCall.method == 'getStorageInfo') {
-            return null;
-          }
-          return null;
-        },
-      );
+            methodChannelStorageInfo.methodChannel,
+            (methodCall) async {
+              if (methodCall.method == 'getStorageInfo') {
+                return null;
+              }
+              return null;
+            },
+          );
 
       expect(
         methodChannelStorageInfo.getStorageInfo(),

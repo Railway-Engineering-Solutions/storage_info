@@ -4,19 +4,20 @@
 Pod::Spec.new do |s|
   s.name             = 'storage_info'
   s.version          = '1.0.0'
-  s.summary          = 'Get storage info on iOS'
+  s.summary          = 'Get device storage capacity and available space on iOS.'
   s.description      = <<-DESC
 A Flutter plugin to get storage information for iOS.
                        DESC
-  s.homepage         = 'https://github.com/yourusername/storage_info'
+  s.homepage         = 'https://github.com/Railway-Engineering-Solutions/storage_info'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'support@res.app' }
+  s.author           = { 'Railway Engineering Solutions' => 'support@res.app' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'storage_info/Sources/storage_info/**/*.swift'
   s.dependency 'Flutter'
-  s.platform = :ios, '11.0'
+  s.platform = :ios, '15.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
-end 
+  s.resource_bundles = {'storage_info_privacy' => ['storage_info/Sources/storage_info/PrivacyInfo.xcprivacy']}
+end

@@ -42,40 +42,14 @@ Future<void> getStorageInfo() async {
 
 ## Platform Support
 
-| Android | iOS |
-|---------|-----|
-| ✅       | ✅   |
+| Android 24+ | iOS 15+ |
+|-------------|---------|
+| ✅           | ✅       |
 
 ## Android Configuration
 
-For Android, the plugin requires READ_EXTERNAL_STORAGE permission. Add the following to your AndroidManifest.xml:
-
-```xml
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-```
-
-Also, for devices running Android 6.0 (API level 23) and above, you'll need to request the permission at runtime:
-
-```dart
-import 'package:permission_handler/permission_handler.dart';
-
-Future<void> getStorageWithPermission() async {
-  var status = await Permission.storage.status;
-  if (!status.isGranted) {
-    status = await Permission.storage.request();
-    if (!status.isGranted) {
-      // Handle permission not granted
-      return;
-    }
-  }
-  
-  // Now you can call getStorageInfo
-  final info = await StorageInfo().getStorageInfo();
-  // ...
-}
-```
-
-Note: The `permission_handler` package is not included in this package and needs to be added separately if you want to handle runtime permissions.
+No storage permission is required. The plugin reports capacity for the volume
+that contains the app's data directory.
 
 ## Features
 

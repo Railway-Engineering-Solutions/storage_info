@@ -36,17 +36,13 @@ class StorageInfoData {
 /// {@macro storage_info}
 class StorageInfo {
   /// {@macro storage_info}
-  const StorageInfo({
-    bool Function()? isSupportedPlatform,
-  }) : _isSupportedPlatform = isSupportedPlatform;
-
-  final bool Function()? _isSupportedPlatform;
+  const StorageInfo();
 
   /// Get storage information for the device
   Future<StorageInfoData> getStorageInfo() {
-    if (!(_isSupportedPlatform?.call() ??
-        (defaultTargetPlatform == TargetPlatform.android ||
-            defaultTargetPlatform == TargetPlatform.iOS))) {
+    if (kIsWeb ||
+        (defaultTargetPlatform != TargetPlatform.android &&
+            defaultTargetPlatform != TargetPlatform.iOS)) {
       throw UnsupportedError(
         'StorageInfo is only supported on Android and iOS platforms.',
       );

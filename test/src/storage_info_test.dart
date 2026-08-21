@@ -20,36 +20,37 @@ class MockStorageInfoPlatform extends StorageInfoPlatform {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  setUp(() {
+    StorageInfoPlatform.instance = MockStorageInfoPlatform();
+  });
+
+  tearDown(() {
+    debugDefaultTargetPlatformOverride = null;
+  });
+
   group('StorageInfo', () {
-    setUp(() {
-      StorageInfoPlatform.instance = MockStorageInfoPlatform();
-    });
-
-    test('getStorageInfo returns correct data on a supported platform',
-        () async {
-      final storageInfo = StorageInfo(isSupportedPlatform: () => true);
-      final result = await storageInfo.getStorageInfo();
-
-      expect(result.totalBytes, 1000);
-      expect(result.freeBytes, 500);
-      expect(result.usedBytes, 500);
-    });
-
-    test('getStorageInfo throws on an unsupported platform', () async {
-      final storageInfo = StorageInfo(isSupportedPlatform: () => false);
-
-      try {
-        await storageInfo.getStorageInfo();
-        fail('Expected an UnsupportedError to be thrown.');
-        // Expected an UnsupportedError to be thrown.
-        // ignore: avoid_catching_errors
-      } on UnsupportedError catch (e) {
-        expect(e, isA<UnsupportedError>());
-      }
-    });
-
     test(
-        'getStorageInfo returns correct data on a supported platform '
+      'getStorageInfo returns correct data on a supported platform',
+      () async {
+        debugDefaultTargetPlatformOverride = TargetPlatform.android;
+        final result = await const StorageInfo().getStorageInfo();
+
+        expect(result.totalBytes, 1000);
+        expect(result.freeBytes, 500);
+        expect(result.usedBytes, 500);
+      },
+    );
+
+    test('getStorageInfo throws on an unsupported platform', () {
+      debugDefaultTargetPlatformOverride = TargetPlatform.linux;
+
+      expect(
+        () => const StorageInfo().getStorageInfo(),
+        throwsUnsupportedError,
+      );
+    });
+
+    test('getStorageInfo returns correct data on a supported platform '
         '(no injection)', () async {
       debugDefaultTargetPlatformOverride = TargetPlatform.android;
       const storageInfo = StorageInfo();
@@ -58,7 +59,6 @@ void main() {
       expect(result.totalBytes, 1000);
       expect(result.freeBytes, 500);
       expect(result.usedBytes, 500);
-      debugDefaultTargetPlatformOverride = null;
     });
 
     test('usedPercentage returns correct value', () {
