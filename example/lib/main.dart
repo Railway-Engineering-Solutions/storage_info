@@ -71,37 +71,36 @@ class _StorageInfoPageState extends State<StorageInfoPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child:
-            _isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : _errorMessage != null
-                ? StorageErrorWidget(
-                  errorMessage: _errorMessage!,
-                  onRetry: _loadStorageInfo,
-                )
-                : _storageData != null
-                ? RefreshIndicator(
-                  onRefresh: _loadStorageInfo,
-                  child: ListView(
-                    children: [
-                      const Text(
-                        'Device Storage Information',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+        child: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : _errorMessage != null
+            ? StorageErrorWidget(
+                errorMessage: _errorMessage!,
+                onRetry: _loadStorageInfo,
+              )
+            : _storageData != null
+            ? RefreshIndicator(
+                onRefresh: _loadStorageInfo,
+                child: ListView(
+                  children: [
+                    const Text(
+                      'Device Storage Information',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(height: 32),
-                      StorageIndicator(
-                        usedPercentage: _storageData!.usedPercentage,
-                      ),
-                      const SizedBox(height: 32),
-                      StorageDetailsCard(storageData: _storageData!),
-                    ],
-                  ),
-                )
-                : const Center(child: Text('No storage data available')),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 32),
+                    StorageIndicator(
+                      usedPercentage: _storageData!.usedPercentage,
+                    ),
+                    const SizedBox(height: 32),
+                    StorageDetailsCard(storageData: _storageData!),
+                  ],
+                ),
+              )
+            : const Center(child: Text('No storage data available')),
       ),
     );
   }

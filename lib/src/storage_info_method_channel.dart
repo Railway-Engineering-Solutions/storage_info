@@ -11,8 +11,9 @@ class MethodChannelStorageInfo extends StorageInfoPlatform {
 
   @override
   Future<StorageInfoData> getStorageInfo() async {
-    final result = await methodChannel
-        .invokeMethod<Map<Object?, Object?>>('getStorageInfo');
+    final result = await methodChannel.invokeMethod<Map<Object?, Object?>>(
+      'getStorageInfo',
+    );
 
     if (result == null) {
       throw PlatformException(
