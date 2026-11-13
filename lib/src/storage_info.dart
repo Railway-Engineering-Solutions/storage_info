@@ -11,7 +11,7 @@ import 'package:storage_info/src/storage_info_platform_interface.dart';
 /// Storage information model
 class StorageInfoData {
   /// Creates a new [StorageInfoData] instance
-  const StorageInfoData({
+  const new({
     required this.totalBytes,
     required this.freeBytes,
     required this.usedBytes,
@@ -36,7 +36,7 @@ class StorageInfoData {
 /// {@macro storage_info}
 class StorageInfo {
   /// {@macro storage_info}
-  const StorageInfo();
+  const new();
 
   /// Get storage information for the device
   Future<StorageInfoData> getStorageInfo() {

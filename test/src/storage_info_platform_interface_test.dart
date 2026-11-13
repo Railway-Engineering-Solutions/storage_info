@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:storage_info/src/storage_info_platform_interface.dart';
 
-class TestStorageInfoPlatform extends StorageInfoPlatform {}
+class TestStorageInfoPlatform extends StorageInfoPlatform;
 
 void main() {
   group('StorageInfoPlatform', () {

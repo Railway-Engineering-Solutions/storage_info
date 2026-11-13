@@ -5,7 +5,7 @@ import 'package:storage_info/src/storage_info_method_channel.dart';
 /// The interface that implementations of storage_info must implement.
 abstract class StorageInfoPlatform extends PlatformInterface {
   /// Constructs a StorageInfoPlatform.
-  StorageInfoPlatform() : super(token: _token);
+  new() : super(token: _token);
 
   static final Object _token = Object();
 

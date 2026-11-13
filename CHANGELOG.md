@@ -1,3 +1,11 @@
+# 1.0.1
+
+- Verify on Flutter 3.50.0 / Dart 3.14.0 (`.fvmrc` now pins 3.50.0).
+- Update very_good_analysis to ^11.0.0 and adopt its constructor and
+  empty-body style; no API or behaviour change.
+- Example: import `package:material_ui` instead of the deprecated
+  `package:flutter/material.dart`.
+
 # 1.0.0
 
 - Add Swift Package Manager support while retaining CocoaPods compatibility.

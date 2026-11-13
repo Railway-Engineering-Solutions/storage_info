@@ -1,6 +1,6 @@
 name: storage_info
 description: Get device storage capacity and available space on Android and iOS.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/Railway-Engineering-Solutions/storage_info
 
 environment:
@@ -16,7 +16,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.5
-  very_good_analysis: ^10.3.0
+  very_good_analysis: ^11.0.0
 
 flutter:
   plugin:
